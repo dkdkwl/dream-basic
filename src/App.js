@@ -2,8 +2,10 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const name = '엘리';
   return (
     <div className="App">
+      <h1>{name}</h1>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
