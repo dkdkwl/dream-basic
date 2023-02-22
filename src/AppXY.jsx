@@ -2,17 +2,20 @@ import React, { useState } from 'react';
 import './AppXY.css';
 
 export default function AppXY() {
-  const [appXY,setAppXY] = useState([]);
-  const onMouseMove = (e)=>{
-    console.log(e);
-    setAppXY([e.clientX,e.clientY])
-    console.log(appXY)
-  }
+  const [position, setPosition] = useState({ x: 0, y: 0, z: 0 });
   return (
-    <div className='container' onMouseMove = {(e)=>{
-      onMouseMove(e);
-    }}>
-      <div className='pointer' style={{left:appXY[0],top:appXY[1]}} />
+    <div
+      className='container'
+      onPointerMove={(e) => {
+        // setPosition({ x: e.clientX, y: e.clientY });
+        // 만약 수평으로만 이동이 가능하다면?
+        setPosition((prev) => ({ ...prev, x: e.clientX }));
+      }}
+    >
+      <div
+        className='pointer'
+        style={{ transform: `translate(${position.x}px, ${position.y}px)` }}
+      />
     </div>
   );
 }
